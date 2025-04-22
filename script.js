@@ -14,8 +14,9 @@ document.getElementById('exit-btn').onclick = function () {
 document.getElementById('continue-btn').onclick = function () {
     document.getElementById('instructions').classList.add('hidden');
     document.getElementById('quiz-container').classList.remove('hidden');
+    document.getElementById('timeout-message').classList.add('hidden'); // إخفاء الرسالة لو موجودة من قبل
     startTimer();
-    quizStarted = true; // علشان نعرف إن الامتحان بدأ فعلاً
+    quizStarted = true;
 };
 
 function startTimer() {
@@ -25,7 +26,7 @@ function startTimer() {
         updateTimerDisplay();
         if (timeRemaining <= 0) {
             clearInterval(timerInterval);
-            endQuiz("انتهى الوقت!");
+            endQuiz("⏰ انتهى الوقت!");
         }
     }, 1000);
 }
@@ -39,28 +40,30 @@ function updateTimerDisplay() {
 document.getElementById('quiz-form').onsubmit = function (e) {
     e.preventDefault();
     clearInterval(timerInterval);
-    alert("تم إرسال الإجابات! سيتم تحويلك الآن.");
-    // إرسال البيانات هنا إذا أردت
+    alert("✅ تم إرسال الإجابات!");
 };
 
-// دالة لإنهاء الامتحان
+// إنهاء الاختبار مع عرض رسالة
 function endQuiz(message) {
     clearInterval(timerInterval);
-    alert(message);
 
-    // إخفاء محتوى الاختبار
+    // إخفاء الفورم والمحتوى
     const quizContainer = document.getElementById('quiz-container');
     if (quizContainer) quizContainer.classList.add('hidden');
 
-    // إظهار رسالة انتهاء
-    const timeoutMessage = document.getElementById('timeout-message');
-    if (timeoutMessage) timeoutMessage.classList.remove('hidden');
+    // عرض الرسالة
+    const messageBox = document.getElementById('timeout-message');
+    if (messageBox) {
+        messageBox.textContent = message;
+        messageBox.classList.remove('hidden');
+    }
 }
 
-// إذا المستخدم غادر التاب
+// اكتشاف مغادرة التاب
 document.addEventListener("visibilitychange", function () {
     if (document.hidden && quizStarted) {
-        endQuiz("تم مغادرة الصفحة! تم إنهاء الامتحان.");
+        endQuiz("🚫 تم إنهاء الاختبار بسبب مغادرتك الصفحة.");
     }
 });
+
 
