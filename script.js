@@ -1,4 +1,3 @@
-
 let timerInterval;
 let timeRemaining = 600;
 
@@ -22,18 +21,17 @@ function startTimer() {
     timerInterval = setInterval(() => {
         timeRemaining--;
         updateTimerDisplay();
-     if (timeRemaining <= 0) {
-    clearInterval(timerInterval);
-    
-    // إخفاء زر الإرسال
-    const submitBtn = document.getElementById('submit-btn');
-    if (submitBtn) submitBtn.style.display = 'none';
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval);
 
-    // عرض رسالة انتهاء الوقت
-    const message = document.getElementById('timeout-message');
-    if (message) message.classList.remove('hidden');
-}
+            // إخفاء زر الإرسال
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) submitBtn.style.display = 'none';
 
+            // عرض رسالة انتهاء الوقت
+            const message = document.getElementById('timeout-message');
+            if (message) message.classList.remove('hidden');
+        }
     }, 1000);
 }
 
@@ -50,3 +48,20 @@ document.getElementById('quiz-form').onsubmit = function (e) {
     // يمكنك هنا إرسال البيانات إلى Google Apps Script
     // مثال: fetch('SCRIPT_URL', { method: 'POST', body: new FormData(this) })
 };
+
+// منع مغادرة الصفحة أو فتح تاب جديد أثناء الاختبار
+window.addEventListener('beforeunload', function (e) {
+    // الرسالة دي بتظهر في بعض المتصفحات زي كروم
+    e.preventDefault();
+    e.returnValue = 'هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيؤدي ذلك إلى إنهاء الاختبار.';
+});
+
+// تتبع إذا تم تغيير التاب
+document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+        alert('تم مغادرة الصفحة أو فتح تاب آخر. سيتم إنهاء الاختبار.');
+        clearInterval(timerInterval);
+        // يمكنك هنا إغلاق النافذة أو إعادة تحميل الصفحة
+        location.reload();
+    }
+});
