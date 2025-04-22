@@ -1,5 +1,6 @@
 let timerInterval;
 let timeRemaining = 600;
+let quizStarted = false;
 
 document.getElementById('start-btn').onclick = function () {
     document.getElementById('start-screen').classList.add('hidden');
@@ -14,6 +15,7 @@ document.getElementById('continue-btn').onclick = function () {
     document.getElementById('instructions').classList.add('hidden');
     document.getElementById('quiz-container').classList.remove('hidden');
     startTimer();
+    quizStarted = true; // علشان نعرف إن الامتحان بدأ فعلاً
 };
 
 function startTimer() {
@@ -23,14 +25,7 @@ function startTimer() {
         updateTimerDisplay();
         if (timeRemaining <= 0) {
             clearInterval(timerInterval);
-
-            // إخفاء زر الإرسال
-            const submitBtn = document.getElementById('submit-btn');
-            if (submitBtn) submitBtn.style.display = 'none';
-
-            // عرض رسالة انتهاء الوقت
-            const message = document.getElementById('timeout-message');
-            if (message) message.classList.remove('hidden');
+            endQuiz("انتهى الوقت!");
         }
     }, 1000);
 }
@@ -45,23 +40,27 @@ document.getElementById('quiz-form').onsubmit = function (e) {
     e.preventDefault();
     clearInterval(timerInterval);
     alert("تم إرسال الإجابات! سيتم تحويلك الآن.");
-    // يمكنك هنا إرسال البيانات إلى Google Apps Script
-    // مثال: fetch('SCRIPT_URL', { method: 'POST', body: new FormData(this) })
+    // إرسال البيانات هنا إذا أردت
 };
 
-// منع مغادرة الصفحة أو فتح تاب جديد أثناء الاختبار
-window.addEventListener('beforeunload', function (e) {
-    // الرسالة دي بتظهر في بعض المتصفحات زي كروم
-    e.preventDefault();
-    e.returnValue = 'هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيؤدي ذلك إلى إنهاء الاختبار.';
-});
+// دالة لإنهاء الامتحان
+function endQuiz(message) {
+    clearInterval(timerInterval);
+    alert(message);
 
-// تتبع إذا تم تغيير التاب
-document.addEventListener('visibilitychange', function () {
-    if (document.hidden) {
-        alert('تم مغادرة الصفحة أو فتح تاب آخر. سيتم إنهاء الاختبار.');
-        clearInterval(timerInterval);
-        // يمكنك هنا إغلاق النافذة أو إعادة تحميل الصفحة
-        location.reload();
+    // إخفاء محتوى الاختبار
+    const quizContainer = document.getElementById('quiz-container');
+    if (quizContainer) quizContainer.classList.add('hidden');
+
+    // إظهار رسالة انتهاء
+    const timeoutMessage = document.getElementById('timeout-message');
+    if (timeoutMessage) timeoutMessage.classList.remove('hidden');
+}
+
+// إذا المستخدم غادر التاب
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden && quizStarted) {
+        endQuiz("تم مغادرة الصفحة! تم إنهاء الامتحان.");
     }
 });
+
