@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار محاسبة</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="start-screen">
+        <button id="start-btn">بدء الاختبار</button>
+    </div>
+
+    <div id="instructions" class="hidden">
+        <p>هذا الاختبار مدته 10 دقائق فقط، لا يمكنك تغيير الصفحة أثناء الاختبار. سيتم إنهاء الاختبار تلقائيًا عند انتهاء الوقت وإرسال الإجابات. الاختبار اختياري.</p>
+        <button id="exit-btn">خروج</button>
+        <button id="continue-btn">استمرار</button>
+    </div>
+
+    <div id="quiz-container" class="hidden">
+        <div id="timer">10:00</div>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. ما هي المعادلة المحاسبية الأساسية؟</p>
+                <label><input type="radio" name="q1" value="a"> الأصول = الخصوم + حقوق الملكية</label><br>
+                <label><input type="radio" name="q1" value="b"> الأصول = الإيرادات - المصروفات</label><br>
+                <label><input type="radio" name="q1" value="c"> الخصوم = الأصول + الإيرادات</label>
+            </div>
+            <div class="question">
+                <p>2. ما هو القيد المزدوج في المحاسبة؟</p>
+                <label><input type="radio" name="q2" value="a"> تسجيل العملية في حساب واحد</label><br>
+                <label><input type="radio" name="q2" value="b"> تسجيل العملية في حسابين على الأقل</label><br>
+                <label><input type="radio" name="q2" value="c"> عدم تسجيل العملية</label>
+            </div>
+            <div class="question">
+                <p>3. ما هي قائمة المركز المالي؟</p>
+                <label><input type="radio" name="q3" value="a"> قائمة بالمصروفات فقط</label><br>
+                <label><input type="radio" name="q3" value="b"> قائمة بالإيرادات فقط</label><br>
+                <label><input type="radio" name="q3" value="c"> قائمة توضح أصول وخصوم وحقوق الملكية</label>
+            </div>
+            <div class="question">
+                <p>4. أي من التالي يعتبر من الأصول المتداولة؟</p>
+                <label><input type="radio" name="q4" value="a"> الأراضي</label><br>
+                <label><input type="radio" name="q4" value="b"> النقدية بالصندوق</label><br>
+                <label><input type="radio" name="q4" value="c"> المباني</label>
+            </div>
+            <div class="question">
+                <p>5. ما هو الهدف من المحاسبة؟</p>
+                <label><input type="radio" name="q5" value="a"> إعداد الفواتير فقط</label><br>
+                <label><input type="radio" name="q5" value="b"> المساعدة في اتخاذ قرارات مالية</label><br>
+                <label><input type="radio" name="q5" value="c"> جمع الضرائب</label>
+            </div>
+            <button type="submit">إرسال</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
