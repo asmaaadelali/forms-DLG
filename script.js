@@ -22,11 +22,18 @@ function startTimer() {
     timerInterval = setInterval(() => {
         timeRemaining--;
         updateTimerDisplay();
-        if (timeRemaining <= 0) {
-            clearInterval(timerInterval);
-            alert("انتهى الوقت! سيتم إرسال الإجابات.");
-            document.getElementById('quiz-form').submit();
-        }
+     if (timeRemaining <= 0) {
+    clearInterval(timerInterval);
+    
+    // إخفاء زر الإرسال
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) submitBtn.style.display = 'none';
+
+    // عرض رسالة انتهاء الوقت
+    const message = document.getElementById('timeout-message');
+    if (message) message.classList.remove('hidden');
+}
+
     }, 1000);
 }
 
