@@ -1,5 +1,5 @@
 let timerInterval;
-let timeRemaining = 600;
+let timeRemaining = 300; // 5 دقائق
 let quizStarted = false;
 
 document.getElementById('start-btn').onclick = function () {
@@ -45,22 +45,13 @@ document.getElementById('quiz-form').onsubmit = function (e) {
 
 function endQuiz(message) {
     clearInterval(timerInterval);
-    
-    // إخفاء كل شي يخص الاختبار
     document.getElementById('quiz-container').classList.add('hidden');
-    
-    // عرض رسالة النهاية
     const messageBox = document.getElementById('timeout-message');
     messageBox.textContent = message;
     messageBox.classList.remove('hidden');
 }
 
-// كشف مغادرة التاب
-document.addEventListener("visibilitychange", function () {
-    if (document.hidden && quizStarted) {
-        endQuiz("🚫 تم إنهاء الاختبار بسبب مغادرتك الصفحة.");
-    }
-});
+ 
 
 
 
