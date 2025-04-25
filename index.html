@@ -1,64 +1,125 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار محاسبة</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>الاختبار المهني</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="start-screen">
-        <button id="start-btn">بدء الاختبار</button>
-    </div>
+  <div class="container" id="main-page">
+    <button id="start-button">الاختبار المهني</button>
+  </div>
 
-    <div id="instructions" class="hidden">
-        <p>هذا الاختبار مدته 10 دقائق فقط، لا يمكنك تغيير الصفحة أثناء الاختبار. سيتم إنهاء الاختبار تلقائيًا عند انتهاء الوقت وإرسال الإجابات. الاختبار اختياري.</p>
-        <button id="exit-btn">خروج</button>
-        <button id="continue-btn">استمرار</button>
-    </div>
+  <div class="container hidden" id="intro-page">
+    <h2>مرحبًا بك في اختبار التقييم المهني لمحاسب مبتدئ</h2>
+    <p>
+      هذا الاختبار مصمم لمحاكاة الواقع العملي والمهام اليومية التي يقوم بها المحاسب ضمن فريق عملنا. 
+      يهدف الاختبار إلى قياس مهاراتك الأساسية ومدى استعدادك لتنفيذ العمليات المحاسبية بكفاءة واحترافية.
+    </p>
+    <button id="continue-button">استمرار</button>
+    <button id="back-button">خروج</button>
+  </div>
 
-    <div id="quiz-container" class="hidden">
-        <div id="timer">10:00</div>
-        <form id="quiz-form">
-            <div class="question">
-                <p>1. Which of the following accounts is not an asset?</p>
-                <label><input type="radio" name="q1" value="a">Cash</label><br>
-                <label><input type="radio" name="q1" value="b"> Inventory</label><br>
-                <label><input type="radio" name="q1" value="c"> Accounts Payable</label>
-                <label><input type="radio" name="q1" value="d"> d. Equipment</label>
-            </div>
-            <div class="question">
-                <p>2. If total assets were $21,000 and total liabilities were $12,000 at the beginning of the year, and if net income for the year was $5,000, what is total owners' equity at the end of the year?</p>
-                    <label><input type="radio" name="q2" value="a"> a. $4,000</label><br>
-                    <label><input type="radio" name="q2" value="b"> b. $5,000</label><br>
-                    <label><input type="radio" name="q2" value="c"> c. $9,000</label><br>
-                    <label><input type="radio" name="q2" value="d"> d. $14,000</label>
-            </div>
-            <div class="question">
-                <p>3. Normal account balances are as follows:</p>
-                   <label><input type="radio" name="q3" value="a"> a. Cash, Accounts Receivable, and Service Revenues are debits.</label><br>
-                   <label><input type="radio" name="q3" value="b"> b. Interest Expense, Wages Payable, and Retained Earnings are credits.</label><br>
-                  <label><input type="radio" name="q3" value="c"> c. Merchandise Inventory, Cost of Goods Sold, and Equipment are debits.</label><br>
-                  <label><input type="radio" name="q3" value="d"> d. Accumulated Depreciation, Cash, and Merchandise Inventory are debits.</label><br>
-                  <label><input type="radio" name="q3" value="e"> e. None of the above</label>
-            </div>
-            <div class="question">
-                <p>4. All of the following are typically classified as current assets <strong>except</strong>:</p>
-                  <label><input type="radio" name="q4" value="a"> a. Marketable Securities</label><br>
-                  <label><input type="radio" name="q4" value="b"> b. Accounts Receivable</label><br>
-                  <label><input type="radio" name="q4" value="c"> c. Cash</label><br>
-                 <label><input type="radio" name="q4" value="d"> d. Equipment</label><br>
-                 <label><input type="radio" name="q4" value="e"> e. Notes Receivable</label>
-            </div>
-          
-            <button type="submit">إرسال</button>
-          
-        </form>
-            
-    </div>
- <div id="timeout-message" class="hidden" style="color: red; font-size: 20px; text-align: center; margin-top: 30px;">
-</div>
-    <script src="script.js"></script>
+  <div class="container hidden" id="instructions-page">
+    <h3>يتطلب الاختبار:</h3>
+    <ul>
+      <li>استخدام أساسيات برنامج Excel لإعداد الجداول وتنظيم البيانات.</li>
+      <li>إدخال البيانات بدقة واتباع التنسيقات المطلوبة.</li>
+      <li>تسجيل العمليات المحاسبية وفقًا للمعايير والمعرفة العلمية.</li>
+      <li>استخدام البيانات المتاحة لاعداد تقارير بناءة.</li>
+    </ul>
+    <button id="next-to-form">التالي</button>
+  </div>
+
+  <div class="container hidden" id="user-form-page">
+    <h3>الرجاء إدخال بياناتك</h3>
+    <form id="user-form">
+      <input type="text" name="name" placeholder="الاسم الكامل" required><br>
+      <input type="email" name="email" placeholder="البريد الإلكتروني" required><br>
+      <input type="tel" name="phone" placeholder="رقم الهاتف" required><br>
+      <button type="submit">بدء الاختبار</button>
+    </form>
+  </div>
+
+  <div class="container hidden" id="quiz-page">
+    <h3>اختبار محاسب مبتدئ - Junior Level</h3>
+    <p id="timer">الوقت المتبقي: 03:00</p>
+    <form id="quiz-form" action="https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec" method="POST">
+      <div id="quiz-questions">
+        <div>
+          <label>1. عند اصدار عرض سعر للعميل، يتم تسجيل هذا الحدث بقيد محاسبي:</label><br>
+          <input type="radio" name="q1" value="صحيحة" required> العبارة صحيحة<br>
+          <input type="radio" name="q1" value="خاطئة"> العبارة خاطئة<br>
+        </div>
+        <div>
+          <label>2. عملية بيع سلعة بـ1000$:</label><br>
+          <input type="radio" name="q2" value="المبيعات مدينة والصندوق دائن"> المبيعات مدينة والصندوق دائن<br>
+          <input type="radio" name="q2" value="المشتريات مدينة والعميل دائن"> المشتريات مدينة والعميل دائن<br>
+          <input type="radio" name="q2" value="المخزون دائن والعميل مدين"> المخزون دائن والعميل مدين<br>
+          <input type="radio" name="q2" value="المبيعات دائنة والعميل مدين"> المبيعات دائنة والعميل مدين<br>
+        </div>
+        <div>
+          <label>3. الأصل الثابت هو:</label><br>
+          <input type="radio" name="q3" value="لا يتحرك"> أصل ثابت فى مكانه لا يتحرك<br>
+          <input type="radio" name="q3" value="يستخدم مثل البضاعة"> أصل يتم استخدامه أكثر من مرة مثل البضاعة<br>
+          <input type="radio" name="q3" value="انتفاع مستقبلي طويل"> أصل يتم استخدامه لغرض الانتفاع به مستقبلياً ويتم استخدامه لفترة أطول من سنة مالية<br>
+          <input type="radio" name="q3" value="لا يقدم منافع"> أصل يتم استخدامه لمدة أكثر من سنة ولا يقدم أى منافع مثل الأثاث المكتبي<br>
+        </div>
+        <div>
+          <label>4. في حالة الحصول على عرض سعر لأصناف ترغب الشركة في شرائها، يتم إثباتها محاسبياً:</label><br>
+          <input type="radio" name="q4" value="صحيحة" required> العبارة صحيحة<br>
+          <input type="radio" name="q4" value="خاطئة"> العبارة خاطئة<br>
+        </div>
+        <div>
+          <label>5. الأصول المتداولة هي كل ما يلي ما عدا:</label><br>
+          <input type="radio" name="q5" value="المخزون"> المخزون السلعي<br>
+          <input type="radio" name="q5" value="البنوك"> البنوك<br>
+          <input type="radio" name="q5" value="الاثاث"> الأثاث المكتبي<br>
+          <input type="radio" name="q5" value="العملاء"> العملاء<br>
+        </div>
+        <div>
+          <label>6. المصاريف مدينة بطبيعتها لأنها:</label><br>
+          <input type="radio" name="q6" value="زيادة اصول"> تمثل زيادة في الأصول<br>
+          <input type="radio" name="q6" value="نقص حقوق ملكية"> تمثل نقص في حقوق الملكية<br>
+          <input type="radio" name="q6" value="نقص التزامات"> تمثل نقص في الالتزامات<br>
+          <input type="radio" name="q6" value="لا شيء"> لا شيء مما سبق<br>
+        </div>
+        <div>
+          <label>7. احتساب اهلاك الأصول الثابتة بطريقة القسط الثابت يتطلب تقدير القيمة التخريدية:</label><br>
+          <input type="radio" name="q7" value="صحيحة"> عبارة صحيحة<br>
+          <input type="radio" name="q7" value="خاطئة"> عبارة خاطئة<br>
+        </div>
+        <div>
+          <label>8. كمحاسب لشركة أثاث، ما التصرف الصحيح عند استلام فواتير متنوعة:</label><br>
+          <input type="radio" name="q8" value="مخزون"> تسجيل قيد محاسبي على المخزون السلعي<br>
+          <input type="radio" name="q8" value="اصول"> تسجيل قيد محاسبي على الأصول الثابتة<br>
+          <input type="radio" name="q8" value="تحقق وتأكيد"> تحقق من الغرض من كل صنف وراجع التوقيعات<br>
+          <input type="radio" name="q8" value="رفض وطلب توجيه"> رفض الاستلام وطلب توجيه من المدير العام<br>
+        </div>
+        <div>
+          <label>9. ضريبة القيمة المضافة في فاتورة المشتريات تعتبر تكلفة إذا:</label><br>
+          <input type="radio" name="q9" value="المورد غير مسجل"> المورد غير مسجل في ضريبة القيمة المضافة<br>
+          <input type="radio" name="q9" value="الشركة غير مسجلة"> الشركة المشتراة غير مسجلة<br>
+          <input type="radio" name="q9" value="السلعة غير خاضعة"> السلعة غير خاضعة للضريبة<br>
+          <input type="radio" name="q9" value="السلعة اصل"> السلعة تمثل أصل ثابت<br>
+        </div>
+        <div>
+          <label>10. المصاريف المقدمة هي مصاريف فترة يتم إقفالها في حساب الأرباح والخسائر:</label><br>
+          <input type="radio" name="q10" value="صحيحة" required> العبارة صحيحة<br>
+          <input type="radio" name="q10" value="خاطئة"> العبارة خاطئة<br>
+        </div>
+      </div>
+      <input type="hidden" name="username">
+      <input type="hidden" name="useremail">
+      <input type="hidden" name="userphone">
+      <button type="submit">إرسال</button>
+    </form>
+  </div>
+
+  <div class="container hidden" id="result-page">
+    <h3 id="result-message"></h3>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
