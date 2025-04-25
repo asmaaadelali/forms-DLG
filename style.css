@@ -7,10 +7,10 @@ body {
 }
 
 .container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 60px auto;
   background-color: #fff;
-  padding: 40px 30px;
+  padding: 40px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: right;
@@ -18,7 +18,7 @@ body {
 
 button {
   padding: 12px 25px;
-  margin: 12px 6px;
+  margin: 20px 10px 0 0;
   font-size: 17px;
   border: none;
   border-radius: 10px;
@@ -44,6 +44,38 @@ input[type="tel"] {
   font-size: 15px;
 }
 
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.question {
+  margin-bottom: 30px;
+}
+
+.question h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #444;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.instructions {
+  margin-bottom: 30px;
+  line-height: 1.8;
+  padding-right: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
 .hidden {
   display: none;
 }
@@ -51,6 +83,7 @@ input[type="tel"] {
 h2, h3 {
   color: #333;
   margin-bottom: 20px;
+  padding-right: 10px;
 }
 
 #timer {
@@ -58,5 +91,7 @@ h2, h3 {
   color: #F28B50;
   font-size: 18px;
   margin-top: 10px;
+  text-align: left;
 }
+
 
