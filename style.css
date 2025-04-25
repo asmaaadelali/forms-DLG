@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
-
 body {
-  font-family: 'Amiri', serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fdfdfd;
   margin: 0;
   padding: 0;
