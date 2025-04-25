@@ -1,44 +1,62 @@
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
-    text-align: center;
-    direction: rtl;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
+
+.container {
+  max-width: 700px;
+  margin: 60px auto;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: right;
 }
 
 button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
+  padding: 12px 25px;
+  margin: 12px 6px;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #F28B50, #F2CB57);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+  background: linear-gradient(45deg, #F29C50, #F2BA52);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
 }
 
 .hidden {
-    display: none;
+  display: none;
+}
+
+h2, h3 {
+  color: #333;
+  margin-bottom: 20px;
 }
 
 #timer {
-    font-size: 24px;
-    font-weight: bold;
-    color: red;
-    margin: 20px;
+  font-weight: bold;
+  color: #F28B50;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
-.question {
-    margin: 20px auto;
-    width: 80%;
-    text-align: right;
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
