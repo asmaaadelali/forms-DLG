@@ -1,55 +1,86 @@
-let timerInterval;
-let timeRemaining = 300; // 5 دقائق
-let quizStarted = false;
 
-document.getElementById('start-btn').onclick = function () {
-    document.getElementById('start-screen').classList.add('hidden');
-    document.getElementById('instructions').classList.remove('hidden');
-};
+document.addEventListener("DOMContentLoaded", function () {
+  const startButton = document.getElementById("start-button");
+  const continueButton = document.getElementById("continue-button");
+  const backButton = document.getElementById("back-button");
+  const nextToForm = document.getElementById("next-to-form");
+  const userForm = document.getElementById("user-form");
+  const quizForm = document.getElementById("quiz-form");
 
-document.getElementById('exit-btn').onclick = function () {
-    location.reload();
-};
+  const mainPage = document.getElementById("main-page");
+  const introPage = document.getElementById("intro-page");
+  const instructionsPage = document.getElementById("instructions-page");
+  const userFormPage = document.getElementById("user-form-page");
+  const quizPage = document.getElementById("quiz-page");
+  const resultPage = document.getElementById("result-page");
+  const resultMessage = document.getElementById("result-message");
+  const timerDisplay = document.getElementById("timer");
 
-document.getElementById('continue-btn').onclick = function () {
-    document.getElementById('instructions').classList.add('hidden');
-    document.getElementById('quiz-container').classList.remove('hidden');
-    document.getElementById('timeout-message').classList.add('hidden');
-    startTimer();
-    quizStarted = true;
-};
+  let timer;
+  let timeLeft = 180;
 
-function startTimer() {
-    updateTimerDisplay();
-    timerInterval = setInterval(() => {
-        timeRemaining--;
-        updateTimerDisplay();
-        if (timeRemaining <= 0) {
-            clearInterval(timerInterval);
-            endQuiz("⏰ انتهى الوقت!");
-        }
-    }, 1000);
-}
+  startButton.onclick = () => {
+    mainPage.classList.add("hidden");
+    introPage.classList.remove("hidden");
+  };
 
-function updateTimerDisplay() {
-    const minutes = Math.floor(timeRemaining / 60).toString().padStart(2, '0');
-    const seconds = (timeRemaining % 60).toString().padStart(2, '0');
-    document.getElementById('timer').textContent = `${minutes}:${seconds}`;
-}
+  backButton.onclick = () => {
+    introPage.classList.add("hidden");
+    mainPage.classList.remove("hidden");
+  };
 
-document.getElementById('quiz-form').onsubmit = function (e) {
+  continueButton.onclick = () => {
+    introPage.classList.add("hidden");
+    instructionsPage.classList.remove("hidden");
+  };
+
+  nextToForm.onclick = () => {
+    instructionsPage.classList.add("hidden");
+    userFormPage.classList.remove("hidden");
+  };
+
+  userForm.onsubmit = function (e) {
     e.preventDefault();
-    clearInterval(timerInterval);
-    alert("✅ تم إرسال الإجابات!");
-};
+    const name = userForm.elements["name"].value;
+    const email = userForm.elements["email"].value;
+    const phone = userForm.elements["phone"].value;
 
-function endQuiz(message) {
-    clearInterval(timerInterval);
-    document.getElementById('quiz-container').classList.add('hidden');
-    const messageBox = document.getElementById('timeout-message');
-    messageBox.textContent = message;
-    messageBox.classList.remove('hidden');
-}
+    quizForm.elements["username"].value = name;
+    quizForm.elements["useremail"].value = email;
+    quizForm.elements["userphone"].value = phone;
+
+    userFormPage.classList.add("hidden");
+    quizPage.classList.remove("hidden");
+    startTimer();
+  };
+
+  function startTimer() {
+    timer = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        quizForm.classList.add("hidden");
+        resultPage.classList.remove("hidden");
+        resultMessage.textContent = "انتهى الوقت وتم إرسال إجابتك وسوف يتم إرسال النتيجة عبر البريد الإلكتروني";
+        quizForm.submit();
+      } else {
+        timeLeft--;
+        const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+        const seconds = String(timeLeft % 60).padStart(2, "0");
+        timerDisplay.textContent = `الوقت المتبقي: ${minutes}:${seconds}`;
+      }
+    }, 1000);
+  }
+
+  quizForm.onsubmit = function (e) {
+    e.preventDefault();
+    clearInterval(timer);
+    quizPage.classList.add("hidden");
+    resultPage.classList.remove("hidden");
+    resultMessage.textContent = "تم إرسال إجابتك بنجاح وسوف يتم إرسال النتيجة عبر البريد الإلكتروني";
+    quizForm.submit();
+  };
+});
+
 
  
 
