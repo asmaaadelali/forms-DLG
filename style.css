@@ -15,7 +15,7 @@ body {
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  text-align: right;
+  text-align:center;
 }
 
 button {
@@ -28,6 +28,7 @@ button {
   color: white;
   font-weight: bold;
   cursor: pointer;
+  text-align:center;
   transition: background 0.3s ease;
 }
 
