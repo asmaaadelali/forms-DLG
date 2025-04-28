@@ -18,15 +18,15 @@
       هذا الاختبار مصمم لمحاكاة الواقع العملي والمهام اليومية التي يقوم بها المحاسب ضمن فريق عملنا. 
       يهدف الاختبار إلى قياس مهاراتك الأساسية ومدى استعدادك لتنفيذ العمليات المحاسبية بكفاءة واحترافية.
     </p>
-     <div class="button-group">
+   
     <button id="continue-button">استمرار</button>
     <button id="back-button">خروج</button>
     </div>
-    </div>
+ 
 
   <div class="container hidden" id="instructions-page">
     <h3>يتطلب الاختبار:</h3>
-    <ul>
+    <ul class="instructions">
       <li>استخدام أساسيات برنامج Excel لإعداد الجداول وتنظيم البيانات.</li>
       <li>إدخال البيانات بدقة واتباع التنسيقات المطلوبة.</li>
       <li>تسجيل العمليات المحاسبية وفقًا للمعايير والمعرفة العلمية.</li>
@@ -49,7 +49,7 @@
     <h3>اختبار محاسب مبتدئ - Junior Level</h3>
     <p id="timer">الوقت المتبقي: 03:00</p>
     <form id="quiz-form" action="https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec" method="POST">
-      <div id="quiz-questions">
+      <div id="quiz-questions" class="instructions">
         <div>
           <label>1. عند اصدار عرض سعر للعميل، يتم تسجيل هذا الحدث بقيد محاسبي:</label><br>
           <input type="radio" name="q1" value="صحيحة" required> العبارة صحيحة<br>
