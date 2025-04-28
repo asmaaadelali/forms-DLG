@@ -116,6 +116,7 @@ label {
   padding: 18px 18px 10px 18px;
   margin-bottom: 22px;
   box-shadow: 0 2px 8px rgba(242,203,87,0.05);
+  text-align: right; 
 }
 
 .question h4 {
@@ -123,21 +124,37 @@ label {
   color: #333;
   margin-bottom: 10px;
   font-weight: 700;
+  text-align: right;
 }
 .form-title {
-  font-size: 26px;
-  font-weight: bold;
-  color: #333;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, #F28B50 60%, #F2CB57 100%);
+  box-shadow: 0 4px 16px rgba(242,139,80,0.07);
+  border-radius: 16px;
+  padding: 18px 0 18px 0;
+  margin-bottom: 38px;
   text-align: center;
-  margin-bottom: 32px;
   letter-spacing: 1px;
-  border-bottom: 3px solid #F2CB57;
-  display: inline-block;
-  padding-bottom: 8px;
-  background: linear-gradient(90deg, #fff 60%, #f9f7f3 100%);
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 3px 8px rgba(242,203,87,0.07);
+  position: relative;
+  overflow: hidden;
 }
+
+ 
+
+/* تأثير خفيف أسفل العنوان */
+.form-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  background: #fff;
+  opacity: 0.3;
+  border-radius: 3px;
+  margin: 16px auto 0 auto;
+}
+
 
 .question label {
   margin-bottom: 7px;
