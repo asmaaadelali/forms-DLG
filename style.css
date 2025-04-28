@@ -120,9 +120,23 @@ label {
 
 .question h4 {
   font-size: 17px;
-  color: #F28B50;
+  color: #333;
   margin-bottom: 10px;
   font-weight: 700;
+}
+.form-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #F2CB57;
+  display: inline-block;
+  padding-bottom: 8px;
+  background: linear-gradient(90deg, #fff 60%, #f9f7f3 100%);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 3px 8px rgba(242,203,87,0.07);
 }
 
 .question label {
