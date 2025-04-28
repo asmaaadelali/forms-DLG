@@ -6,9 +6,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="button-group">
   <div class="container" id="main-page">
     <button id="start-button">الاختبار المهني</button>
   </div>
+ </div>
 
   <div class="container hidden" id="intro-page">
     <h2>مرحبًا بك في اختبار التقييم المهني لمحاسب مبتدئ</h2>
@@ -16,9 +18,11 @@
       هذا الاختبار مصمم لمحاكاة الواقع العملي والمهام اليومية التي يقوم بها المحاسب ضمن فريق عملنا. 
       يهدف الاختبار إلى قياس مهاراتك الأساسية ومدى استعدادك لتنفيذ العمليات المحاسبية بكفاءة واحترافية.
     </p>
+     <div class="button-group">
     <button id="continue-button">استمرار</button>
     <button id="back-button">خروج</button>
-  </div>
+    </div>
+    </div>
 
   <div class="container hidden" id="instructions-page">
     <h3>يتطلب الاختبار:</h3>
@@ -112,7 +116,7 @@
       <input type="hidden" name="username">
       <input type="hidden" name="useremail">
       <input type="hidden" name="userphone">
-      <button type="submit">إرسال</button>
+      <button class="button-group" type="submit">إرسال</button>
     </form>
   </div>
 
