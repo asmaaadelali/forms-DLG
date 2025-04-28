@@ -27,14 +27,14 @@ button {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  display: inline-block;
-  text-align: center;
+  text-align:center;
   transition: background 0.3s ease;
 }
 
 button:hover {
   background: linear-gradient(45deg, #F29C50, #F2BA52);
 }
+
 
 input[type="text"],
 input[type="email"],
