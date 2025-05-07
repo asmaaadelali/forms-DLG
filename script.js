@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 5000);
   }
 
+  // تعديل دالة endTest لإرسال البيانات عبر fetch بدلاً من submit
   function endTest(message) {
     if (testEnded) return;
     testEnded = true;
@@ -102,9 +103,29 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(timer);
     quizPage.classList.add("hidden");
     resultPage.classList.remove("hidden");
-    resultMessage.textContent = message;
+    resultMessage.textContent = "جاري إرسال إجابتك...";
 
-    quizForm.submit();
+    // إرسال البيانات عبر fetch (AJAX)
+    const formData = new FormData(quizForm);
+    fetch(quizForm.action, {
+      method: "POST",
+      body: formData,
+    })
+      .then(async (response) => {
+        let msg = message;
+        if (response.ok) {
+          try {
+            const data = await response.json();
+            if (data && data.message) msg = data.message;
+          } catch (_) {}
+        } else {
+          msg = "حدث خطأ أثناء إرسال الإجابة. يرجى المحاولة لاحقًا.";
+        }
+        resultMessage.textContent = msg;
+      })
+      .catch(() => {
+        resultMessage.textContent = "تعذر الاتصال بالخادم. يرجى المحاولة لاحقًا.";
+      });
   }
 
   quizForm.onsubmit = function (e) {
