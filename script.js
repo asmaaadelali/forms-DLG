@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const warningMessage = document.getElementById("warning-message");
 
   let timer;
-  let timeLeft = 180;
+  let timeLeft; // سيتم تعيينه عند بدء الاختبار
   let testEnded = false;
 
   startButton.onclick = () => {
@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     userFormPage.classList.add("hidden");
     quizPage.classList.remove("hidden");
+
+    timeLeft = 180; // 3 دقائق = 180 ثانية
     startTimer();
   };
 
@@ -59,17 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let warnedTwoMinutes = false;
     let warnedOneMinute = false;
 
-    warningMessage.style.display = "none"; // إخفاء الرسالة في البداية
+    warningMessage.style.display = "none";
 
     timer = setInterval(() => {
       if (timeLeft <= 0) {
         clearInterval(timer);
         endTest("انتهى الوقت وتم إرسال إجابتك وسوف يتم إرسال النتيجة عبر البريد الإلكتروني");
       } else {
-        timeLeft--;
-        const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
-        const seconds = String(timeLeft % 60).padStart(2, "0");
-        timerDisplay.textContent = `الوقت المتبقي: ${minutes}:${seconds}`;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `الوقت المتبقي: ${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
         if (timeLeft === 120 && !warnedTwoMinutes) {
           warnedTwoMinutes = true;
@@ -79,6 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
           warnedOneMinute = true;
           showWarningMessage("تنبيه: تبقى دقيقة واحدة فقط على انتهاء الوقت.");
         }
+
+        timeLeft--;
       }
     }, 1000);
   }
@@ -87,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
     warningMessage.textContent = msg;
     warningMessage.style.display = "block";
 
-    // إخفاء الرسالة بعد 5 ثواني
     setTimeout(() => {
       warningMessage.style.display = "none";
     }, 5000);
@@ -102,13 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
     resultPage.classList.remove("hidden");
     resultMessage.textContent = message;
 
-    // إرسال النموذج تلقائيًا
     quizForm.submit();
   }
 
   quizForm.onsubmit = function (e) {
     e.preventDefault();
-    if (testEnded) return; // منع الإرسال المكرر
+    if (testEnded) return;
     endTest("تم إرسال إجابتك بنجاح وسوف يتم إرسال النتيجة عبر البريد الإلكتروني");
   };
 
