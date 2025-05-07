@@ -51,70 +51,71 @@
 
   <div class="container hidden" id="quiz-page">
     <h3 class="form-title" >اختبار محاسب مبتدئ - Junior Level</h3>
+    <p id="warning-message" style="color: #d9534f; font-weight: bold; text-align: center; margin-bottom: 15px; display: none;"></p>
     <p id="timer">الوقت المتبقي: 03:00</p>
     <form id="quiz-form" action="https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec" method="POST">
       <div id="quiz-questions">
         <!-- كل سؤال في بلوك منفصل -->
         <div class="question">
           <h4>1. عند اصدار عرض سعر للعميل، يتم تسجيل هذا الحدث بقيد محاسبي:</h4>
-          <label><input type="radio" name="q1" value="صحيحة" required> العبارة صحيحة</label>
+          <label><input type="radio" name="q1" value="صحيحة"> العبارة صحيحة</label>
           <label><input type="radio" name="q1" value="خاطئة"> العبارة خاطئة</label>
         </div>
         <div class="question">
           <h4>2. عملية بيع سلعة بـ1000$:</h4>
-          <label><input type="radio" name="q2" value="المبيعات مدينة والصندوق دائن" required> المبيعات مدينة والصندوق دائن</label>
+          <label><input type="radio" name="q2" value="المبيعات مدينة والصندوق دائن"> المبيعات مدينة والصندوق دائن</label>
           <label><input type="radio" name="q2" value="المشتريات مدينة والعميل دائن"> المشتريات مدينة والعميل دائن</label>
           <label><input type="radio" name="q2" value="المخزون دائن والعميل مدين"> المخزون دائن والعميل مدين</label>
           <label><input type="radio" name="q2" value="المبيعات دائنة والعميل مدين"> المبيعات دائنة والعميل مدين</label>
         </div>
         <div class="question">
           <h4>3. الأصل الثابت هو:</h4>
-          <label><input type="radio" name="q3" value="لا يتحرك" required> أصل ثابت فى مكانه لا يتحرك</label>
+          <label><input type="radio" name="q3" value="لا يتحرك"> أصل ثابت فى مكانه لا يتحرك</label>
           <label><input type="radio" name="q3" value="يستخدم مثل البضاعة"> أصل يتم استخدامه أكثر من مرة مثل البضاعة</label>
           <label><input type="radio" name="q3" value="انتفاع مستقبلي طويل"> أصل يتم استخدامه لغرض الانتفاع به مستقبلياً ويتم استخدامه لفترة أطول من سنة مالية</label>
           <label><input type="radio" name="q3" value="لا يقدم منافع"> أصل يتم استخدامه لمدة أكثر من سنة ولا يقدم أى منافع مثل الأثاث المكتبي</label>
         </div>
         <div class="question">
           <h4>4. في حالة الحصول على عرض سعر لأصناف ترغب الشركة في شرائها، يتم إثباتها محاسبياً:</h4>
-          <label><input type="radio" name="q4" value="صحيحة" required> العبارة صحيحة</label>
+          <label><input type="radio" name="q4" value="صحيحة"> العبارة صحيحة</label>
           <label><input type="radio" name="q4" value="خاطئة"> العبارة خاطئة</label>
         </div>
         <div class="question">
           <h4>5. الأصول المتداولة هي كل ما يلي ما عدا:</h4>
-          <label><input type="radio" name="q5" value="المخزون" required> المخزون السلعي</label>
+          <label><input type="radio" name="q5" value="المخزون"> المخزون السلعي</label>
           <label><input type="radio" name="q5" value="البنوك"> البنوك</label>
           <label><input type="radio" name="q5" value="الاثاث"> الأثاث المكتبي</label>
           <label><input type="radio" name="q5" value="العملاء"> العملاء</label>
         </div>
         <div class="question">
           <h4>6. المصاريف مدينة بطبيعتها لأنها:</h4>
-          <label><input type="radio" name="q6" value="زيادة اصول" required> تمثل زيادة في الأصول</label>
+          <label><input type="radio" name="q6" value="زيادة اصول"> تمثل زيادة في الأصول</label>
           <label><input type="radio" name="q6" value="نقص حقوق ملكية"> تمثل نقص في حقوق الملكية</label>
           <label><input type="radio" name="q6" value="نقص التزامات"> تمثل نقص في الالتزامات</label>
           <label><input type="radio" name="q6" value="لا شيء"> لا شيء مما سبق</label>
         </div>
         <div class="question">
           <h4>7. احتساب اهلاك الأصول الثابتة بطريقة القسط الثابت يتطلب تقدير القيمة التخريدية:</h4>
-          <label><input type="radio" name="q7" value="صحيحة" required> عبارة صحيحة</label>
+          <label><input type="radio" name="q7" value="صحيحة"> عبارة صحيحة</label>
           <label><input type="radio" name="q7" value="خاطئة"> عبارة خاطئة</label>
         </div>
         <div class="question">
           <h4>8. كمحاسب لشركة أثاث، ما التصرف الصحيح عند استلام فواتير متنوعة:</h4>
-          <label><input type="radio" name="q8" value="مخزون" required> تسجيل قيد محاسبي على المخزون السلعي</label>
+          <label><input type="radio" name="q8" value="مخزون"> تسجيل قيد محاسبي على المخزون السلعي</label>
           <label><input type="radio" name="q8" value="اصول"> تسجيل قيد محاسبي على الأصول الثابتة</label>
           <label><input type="radio" name="q8" value="تحقق وتأكيد"> تحقق من الغرض من كل صنف وراجع التوقيعات</label>
           <label><input type="radio" name="q8" value="رفض وطلب توجيه"> رفض الاستلام وطلب توجيه من المدير العام</label>
         </div>
         <div class="question">
           <h4>9. ضريبة القيمة المضافة في فاتورة المشتريات تعتبر تكلفة إذا:</h4>
-          <label><input type="radio" name="q9" value="المورد غير مسجل" required> المورد غير مسجل في ضريبة القيمة المضافة</label>
+          <label><input type="radio" name="q9" value="المورد غير مسجل" > المورد غير مسجل في ضريبة القيمة المضافة</label>
           <label><input type="radio" name="q9" value="الشركة غير مسجلة"> الشركة المشتراة غير مسجلة</label>
           <label><input type="radio" name="q9" value="السلعة غير خاضعة"> السلعة غير خاضعة للضريبة</label>
           <label><input type="radio" name="q9" value="السلعة اصل"> السلعة تمثل أصل ثابت</label>
         </div>
         <div class="question">
           <h4>10. المصاريف المقدمة هي مصاريف فترة يتم إقفالها في حساب الأرباح والخسائر:</h4>
-          <label><input type="radio" name="q10" value="صحيحة" required> العبارة صحيحة</label>
+          <label><input type="radio" name="q10" value="صحيحة" > العبارة صحيحة</label>
           <label><input type="radio" name="q10" value="خاطئة"> العبارة خاطئة</label>
         </div>
       </div>
