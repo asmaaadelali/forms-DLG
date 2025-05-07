@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const startButton = document.getElementById("start-button");
   const continueButton = document.getElementById("continue-button");
@@ -15,9 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultPage = document.getElementById("result-page");
   const resultMessage = document.getElementById("result-message");
   const timerDisplay = document.getElementById("timer");
+  const warningMessage = document.getElementById("warning-message");
 
   let timer;
   let timeLeft = 180;
+  let testEnded = false;
 
   startButton.onclick = () => {
     mainPage.classList.add("hidden");
@@ -55,34 +56,82 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function startTimer() {
+    let warnedTwoMinutes = false;
+    let warnedOneMinute = false;
+
+    warningMessage.style.display = "none"; // إخفاء الرسالة في البداية
+
     timer = setInterval(() => {
       if (timeLeft <= 0) {
         clearInterval(timer);
-        quizForm.classList.add("hidden");
-        resultPage.classList.remove("hidden");
-        resultMessage.textContent = "انتهى الوقت وتم إرسال إجابتك وسوف يتم إرسال النتيجة عبر البريد الإلكتروني";
-        quizForm.submit();
+        endTest("انتهى الوقت وتم إرسال إجابتك وسوف يتم إرسال النتيجة عبر البريد الإلكتروني");
       } else {
         timeLeft--;
         const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
         const seconds = String(timeLeft % 60).padStart(2, "0");
         timerDisplay.textContent = `الوقت المتبقي: ${minutes}:${seconds}`;
+
+        if (timeLeft === 120 && !warnedTwoMinutes) {
+          warnedTwoMinutes = true;
+          showWarningMessage("تنبيه: تبقى دقيقتان فقط على انتهاء الوقت.");
+        }
+        if (timeLeft === 60 && !warnedOneMinute) {
+          warnedOneMinute = true;
+          showWarningMessage("تنبيه: تبقى دقيقة واحدة فقط على انتهاء الوقت.");
+        }
       }
     }, 1000);
   }
 
-  quizForm.onsubmit = function (e) {
-    e.preventDefault();
+  function showWarningMessage(msg) {
+    warningMessage.textContent = msg;
+    warningMessage.style.display = "block";
+
+    // إخفاء الرسالة بعد 5 ثواني
+    setTimeout(() => {
+      warningMessage.style.display = "none";
+    }, 5000);
+  }
+
+  function endTest(message) {
+    if (testEnded) return;
+    testEnded = true;
+
     clearInterval(timer);
     quizPage.classList.add("hidden");
     resultPage.classList.remove("hidden");
-    resultMessage.textContent = "تم إرسال إجابتك بنجاح وسوف يتم إرسال النتيجة عبر البريد الإلكتروني";
+    resultMessage.textContent = message;
+
+    // إرسال النموذج تلقائيًا
     quizForm.submit();
+  }
+
+  quizForm.onsubmit = function (e) {
+    e.preventDefault();
+    if (testEnded) return; // منع الإرسال المكرر
+    endTest("تم إرسال إجابتك بنجاح وسوف يتم إرسال النتيجة عبر البريد الإلكتروني");
   };
+
+  // منع الخروج أو تغيير التبويب
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden && !testEnded && !quizPage.classList.contains("hidden")) {
+      endTest("تم إنهاء الاختبار نظرًا لمغادرة صفحة الاختبار أو فتح تبويب آخر. سيتم إرسال إجاباتك تلقائيًا للمراجعة.");
+    }
+  });
+
+  window.addEventListener("blur", function () {
+    if (!testEnded && !quizPage.classList.contains("hidden")) {
+      endTest("تم إنهاء الاختبار نظرًا لمغادرة صفحة الاختبار أو فتح تبويب آخر. سيتم إرسال إجاباتك تلقائيًا للمراجعة.");
+    }
+  });
+
+  window.addEventListener("beforeunload", function (e) {
+    if (!testEnded && !quizPage.classList.contains("hidden")) {
+      endTest("تم إنهاء الاختبار نظرًا لمغادرة صفحة الاختبار أو فتح تبويب آخر. سيتم إرسال إجاباتك تلقائيًا للمراجعة.");
+
+      e.preventDefault();
+      e.returnValue = "";
+      return "";
+    }
+  });
 });
-
-
- 
-
-
-
